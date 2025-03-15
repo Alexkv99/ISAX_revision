@@ -5,11 +5,10 @@ import sys
 import pandas as pd
 from ISAX_tree import iSAXTree
 from exact_search import ExactSearch
-from main import load_mallat_data  # Reusing the dataset loading function
+from main import load_mallat_data 
 import sys
 
 
-# Paths to datasets (modify if needed)
 DATASET_PATHS = {
     "Mallat": "Dataset/Mallat/Mallat_TEST.txt",
     "ECG": "Dataset/NonInvasiveFetalECGThorax1/NonInvasiveFetalECGThorax1_TEST.txt",
