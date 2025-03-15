@@ -5,7 +5,6 @@ from ISAX_tree import iSAXTree
 from exact_search import ExactSearch
 import sys
 
-DATASET_PATH = "Dataset/Mallat/Mallat_TEST.txt"
 
 def load_mallat_data(filepath):
     """Loads and preprocesses the Mallat dataset."""
@@ -46,7 +45,16 @@ def compare_search_methods(tree, exact_searcher, query_series):
     return approx_results, approx_time, exact_results, exact_time
 
 def main():
-    print("Loading Mallat dataset...")
+    dataset = str(sys.argv[3])
+    if dataset == "Mallat":
+        DATASET_PATH = "Dataset/Mallat/Mallat_TEST.txt"
+    elif dataset == "ECG":
+        DATASET_PATH = "Dataset/NonInvasiveFetalECGThorax1/NonInvasiveFetalECGThorax1_TEST.txt"
+    else:
+        print("Dataset not found")
+        sys.exit()
+    
+    print("Loading dataset", dataset)
     labels, time_series = load_mallat_data(DATASET_PATH)
     num_series = len(time_series)
     # Number of queries to test (all)
@@ -77,7 +85,7 @@ def main():
         if approx_results[i] and exact_results[i]:
             print(f"Query {i+1}:")
             print(f"  Approximate Match: {approx_results[i][0][0][:5]}... (SAX: {approx_results[i][0][1]})")
-            print(f"  Exact Match: {exact_results[i][0][:5]}... (Distance: {exact_results[i][1]:.4f})")
+            print(f"  Exact Match: {exact_results[i][0][:5]}")
             print("------------------------")
     # Average of distance between approximate and exact search for all queries
     avg_dist = np.mean([np.linalg.norm(approx_results[i][0][0] - exact_results[i][0]) for i in range(query_count)])
