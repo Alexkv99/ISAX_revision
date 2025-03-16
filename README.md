@@ -23,13 +23,13 @@ pip install numpy pandas sys
 ```
 
 ### **2️⃣ Run the iSAX Search**
-Execute the main script with custom **word length** and **alphabet size** parameters:
+Execute the main script with custom **word length** and **alphabet size** parameters and **dataset name**:
 ```bash
-python main.py <word_length> <alphabet_size>
+python main.py <word_length> <alphabet_size> <dataset_name>
 ```
 For example:
 ```bash
-python main.py 16 8
+python main.py 16 8 Mallat
 ```
 This sets:
 - **Word Length (`w`)** = 16
