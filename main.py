@@ -60,7 +60,7 @@ def main():
     # Number of queries to test (all)
     query_count = num_series
     
-    print(f"Loaded {num_series} time series from Mallat dataset.")
+    print(f"Loaded {num_series} time series from {dataset} dataset.")
     
     print("Building iSAX Tree...")
     # Read parameters from the terminal

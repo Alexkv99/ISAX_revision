@@ -29,11 +29,11 @@ def load_dataset(dataset_name):
 def plot_insertion_time(dataset_name):
     """Plots the time taken to insert time series into the iSAX tree."""
     labels, time_series = load_dataset(dataset_name)
-    num_series_list = [1000, 3000, 5000, len(time_series)]  # Different sizes for testing
+    num_series_list = [100, 500, 1000, len(time_series)] # Different sizes for testing
     times = []
 
     for num_series in num_series_list:
-        tree = iSAXTree(word_length=8, alphabet_size=4, max_leaf_size=10)
+        tree = iSAXTree(word_length=16, alphabet_size=8, max_leaf_size=10)
 
         start_time = time.time()
         for ts in time_series[:num_series]:  # Use subsets of real data
@@ -55,7 +55,7 @@ def plot_search_comparison(dataset_name):
     num_series = min(5000, len(time_series))  # Use a subset for performance
     query_count = 100
 
-    tree = iSAXTree(word_length=8, alphabet_size=4, max_leaf_size=10)
+    tree = iSAXTree(word_length=16, alphabet_size=8, max_leaf_size=10)
     for ts in time_series[:num_series]:
         tree.insert(ts)
 
@@ -86,7 +86,7 @@ def plot_time_series_representation(dataset_name):
     labels, time_series = load_dataset(dataset_name)
     ts = time_series[0]  # Select first time series for visualization
 
-    tree = iSAXTree(word_length=8, alphabet_size=4, max_leaf_size=10)
+    tree = iSAXTree(word_length=16, alphabet_size=8, max_leaf_size=10)
     paa_rep = tree.paa.transform(ts)
     sax_rep = tree.sax.transform(paa_rep)
 
