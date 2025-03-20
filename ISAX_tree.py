@@ -26,9 +26,9 @@ class SAX:
         return np.round(np.percentile(np.random.randn(100000),
                                       np.linspace(0, 100, self.alphabet_size + 1)[1:-1]), 4)
     
-        def transform(self, paa_rep):
-            """Converts PAA representation to SAX symbols."""
-            return np.array([np.sum(paa_value > self.breakpoints) for paa_value in paa_rep])
+    def transform(self, paa_rep):
+        """Converts PAA representation to SAX symbols."""
+        return np.array([np.sum(paa_value > self.breakpoints) for paa_value in paa_rep])
 
 class iSAXNode:
     """Node in the iSAX tree."""
